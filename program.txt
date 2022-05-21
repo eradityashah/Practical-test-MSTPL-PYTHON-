@@ -1,0 +1,27 @@
+Program In Python
+
+import glob 
+import os 
+ 
+file_list = glob.glob(os.path.join(os.getcwd(), "/Users/adityashah/Desktop/jupyter/Test/", "*.txt")) 
+ 
+text = [] 
+ 
+for file_path in file_list: 
+    with open(file_path) as f_input: 
+        text.append(f_input.read()) 
+ 
+ 
+d = dict()
+for line in text:
+    line = line.strip()
+    line = line.lower()
+    words = line.split(" ")
+    for word in words:
+        if word in d:
+            d[word] = d[word] + 1
+        else:
+            d[word] = 1
+
+for key in sorted(d.keys()):
+    print(key, ":",d[key])
